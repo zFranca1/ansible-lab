@@ -1,0 +1,21 @@
+- hosts: db01
+  become: true
+  tasks:
+
+    - name: Get software for apt repository management.
+      apt:
+        state: present
+        name:
+          - python3-apt
+          - python3-pycurl
+    - name: "Install MySQL dependencies."
+      apt:
+        state: present
+        name:
+          - python3-mysqldb
+          - mysql-server
+
+    - name: Create a MySQL database.
+      mysql_db: "db=test state=present"
+    - name: creating database
+      mysql_db: db=notes state=present

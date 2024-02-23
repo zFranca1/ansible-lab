@@ -1,0 +1,10 @@
+---
+- name: install mysql
+  hosts: db01
+  become: true
+  tasks:
+    - name: "install mysql"
+      package: name=mysql-server state=present
+
+
+

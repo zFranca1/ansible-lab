@@ -1,0 +1,12 @@
+- hosts: db01
+  become: true
+  tasks:
+    - name: setting up hosts file
+      lineinfile:
+        dest: /etc/hosts
+        state: present
+        line: "{{item}}"
+      with_items:
+        - 192.168.56.1 control-node
+        - 192.168.56.2 app01
+        - 192.168.56.3 db01
